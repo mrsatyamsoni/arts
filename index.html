@@ -13,17 +13,10 @@
             color: #fff; 
             background: #000; 
             overflow-x: hidden; 
+            opacity: 0; /* Start hidden for smooth fade-in */
+            transition: opacity 1.2s ease-in-out;
         }
-        
-        /* Loading Animation */
-        .loader { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center; 
-            transition: opacity 0.8s ease; 
-        }
-        .loader.fade { opacity: 0; pointer-events: none; }
-        .spinner { width: 60px; height: 60px; border: 4px solid rgba(255,255,255,0.3); border-top: 4px solid #fff; border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        body.loaded { opacity: 1; } /* Fade in when ready */
         
         /* Navigation */
         nav {
@@ -155,7 +148,7 @@
         .grid-item:hover img { transform: scale(1.1); }
         .grid-item p { padding: 25px; font-size: 1.2rem; font-weight: 400; text-shadow: 0 0 10px #fff; }
         
-        /* About & Support Sections - Box Background Restored */
+        /* About & Support Sections */
         .section {
             padding: 130px 20px; max-width: 1200px; margin: 0 auto 110px; text-align: center;
             background: rgba(0,0,0,0.8); border-radius: 60px; backdrop-filter: blur(20px); 
@@ -178,7 +171,7 @@
         }
         .contact-form button:hover { background: linear-gradient(135deg, #ffd700, #fff); box-shadow: 0 0 60px rgba(255,215,0,0.8); }
         
-        /* Footer - Designed with MrSatyamSoni */
+        /* Footer */
         footer { 
             text-align: center; padding: 80px 20px; color: #aaa; font-size: 1.4rem; text-shadow: 0 0 10px #fff; 
             background: rgba(0,0,0,0.6); backdrop-filter: blur(10px);
@@ -201,10 +194,6 @@
     </style>
 </head>
 <body>
-
-    <div class="loader" id="loader">
-        <div class="spinner"></div>
-    </div>
 
     <nav>
         <ul>
@@ -272,16 +261,16 @@
     </div>
 
     <footer>
-        Coded by <strong>@mrsatyamsoni</strong>
+         Designed & Coded by <strong>@MrSatyamSoni</strong>
     </footer>
 
     <script>
-        // Fade Loader
-        window.addEventListener('load', () => { 
-            document.getElementById('loader').classList.add('fade'); 
+        // Smooth fade-in effect when page loads (no full loader)
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded');
         });
         
-        // Generate Animated Stars
+        // Generate Animated Stars (runs immediately)
         const starsBg = document.getElementById('stars');
         for(let i = 0; i < 500; i++) {
             const star = document.createElement('div');
