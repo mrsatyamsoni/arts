@@ -10,11 +10,27 @@
   />
   <style>
     /* Reset */
+        /* Reset */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
     }
+
+/* Remove focus outline & active glow */
+a, img, button {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Remove active/focus background */
+a:focus, 
+a:active, 
+img:focus, 
+img:active {
+    background-color: transparent !important;
+}
     html {
       scroll-behavior: smooth;
     }
@@ -607,3 +623,4 @@
   </script>
 </body>
 </html>
+
